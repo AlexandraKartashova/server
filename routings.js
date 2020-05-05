@@ -1,21 +1,23 @@
 const express = require('express');
 const router = express.Router();
-// const User = require('./user.model');
+const loginController = require('./app/controllers/loginController');
+const User = require('./app/models/user.model');
 
-// router.get('/', async (req,res) => {
-// 	const users = await User.find({})
-// 	res.send({users});
-// })
+router.post('/login', loginController.login)
 
+//all users
 router.get('/login', (req, res) => {
-	res.send({path: 'login'});
+	User.find()
+	.exec()
+	.then(users => res.json(users))
+	.catch(err => res.status(500).json(err))
 })
 
 router.get('/signup', (req, res) => {
 	res.send({path: 'signup'});
 })
 
-router.get('/profile/user/id', (req, res) => {
+router.get('/profile/user/id', (req, res) => { 
 	res.send({path: 'profile/user'});
 })
 

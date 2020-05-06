@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const loginController = require('./app/controllers/loginController');
+const registrController = require('./app/controllers/registrController');
 const User = require('./app/models/user.model');
 
-router.post('/login', loginController.login)
+router.post('/login', loginController.login);
+router.post('/register', registrController.register);
 
 //all users
 router.get('/login', (req, res) => {

@@ -6,8 +6,6 @@ require('./app/models/user.model');
 const server = express();
 const PORT = process.env.PORT || 3000;
 
-
-
 mongoose.connect('mongodb+srv://Alexandra:restart987@cluster0-k46rv.mongodb.net/test', {
 	useNewUrlParser: true,
 	useUnifiedTopology: true

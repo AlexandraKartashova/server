@@ -17,7 +17,6 @@ module.exports.register = async function (req, res) {
 			firstName: req.body.firstName,
 			lastName: req.body.lastName
 		})
-
 		try{
 			await user.save();
 			res.status(201).json(user);

@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-
 const User = require('../models/user.model');
 
 module.exports.register = async function (req, res) {
@@ -23,7 +22,10 @@ module.exports.register = async function (req, res) {
 			await user.save();
 			res.status(201).json(user);
 		} catch(e) {
-			//обработать ошибку
+			res.status(500).json({
+				success: fslse,
+				message: error.message ? error.message : error
+			})
 		}
 	}
 }

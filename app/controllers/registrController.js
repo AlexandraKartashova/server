@@ -2,7 +2,8 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
 
 module.exports.register = async function (req, res) {
-	const candidate = await User.findOne({ email: req.body.email })
+	const { email, password, firstName, lastName } = req.body;
+	const candidate = await User.findOne({ email })
 	if(candidate) {
 		res.status(409).json({ 
 			message: 'User with this email registered!' 
@@ -10,12 +11,11 @@ module.exports.register = async function (req, res) {
 	} else {
 		//создаем пользователя
 		const salt = bcrypt.genSaltSync(10);
-		const password = req.body.password;
 		const user = new User({
-			email: req.body.email,
+			email,
 			password: bcrypt.hashSync(password, salt),
-			firstName: req.body.firstName,
-			lastName: req.body.lastName
+			firstName,
+			lastName
 		})
 		try{
 			await user.save();

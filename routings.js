@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 const loginController = require('./app/controllers/loginController');
 const registrController = require('./app/controllers/registrController');
+const fileController = require('./app/controllers/fileController');
 const User = require('./app/models/user.model');
 
 router.post('/login', loginController.login);
 router.post('/register', registrController.register);
+router.post('/upload', fileController.file)
 
 //all users
 router.get('/login', (req, res) => {

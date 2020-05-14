@@ -15,14 +15,14 @@ module.exports.register = async function (req, res) {
 			email,
 			password: bcrypt.hashSync(password, salt),
 			firstName,
-			lastName
+			 
 		})
 		try{
 			await user.save();
 			res.status(201).json(user);
 		} catch(e) {
 			res.status(500).json({
-				success: fslse,
+				success: false,
 				message: error.message ? error.message : error
 			})
 		}

@@ -17,6 +17,7 @@ mongoose.connect('mongodb+srv://Alexandra:restart987@cluster0-k46rv.mongodb.net/
 server.use(multer({dest:'uploads'}).single('file'));
 server.use(bodyParser.json());
 server.use('/', require('./app/routings/routings'));
+server.use('/user', require('./app/routings/userRouts'));
 
 server.listen(PORT, () => {
 	console.log('Server has been started...');

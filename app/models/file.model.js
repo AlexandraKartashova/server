@@ -9,14 +9,18 @@ const fileSchema = new Schema({
 	// 	type: String,
 	// 	required: true
 	// },
-	key: {
+	file: {
 		type: String,
-		required: true
+		require: true
 	},
-	user: {
-		ref: 'users',
-		type: Schema.Types.ObjectId
-	}
+	// key: {
+	// 	type: String,
+	// 	required: true
+	// },
+	// user: {
+	// 	ref: 'users',
+	// 	type: Schema.Types.ObjectId
+	// }
 })
 
-module.exports = mongoose.model('files', fileSchema);
+module.exports = File = mongoose.model('files', fileSchema);

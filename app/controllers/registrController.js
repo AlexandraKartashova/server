@@ -4,6 +4,7 @@ const User = require('../models/user.model');
 module.exports.register = async function (req, res) {
 	const { email, password, firstName, lastName } = req.body;
 	const candidate = await User.findOne({ email })
+	// console.log(email);
 	if(candidate) {
 		res.status(409).json({ 
 			message: 'User with this email registered!' 

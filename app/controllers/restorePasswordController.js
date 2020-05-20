@@ -20,4 +20,4 @@ module.exports.restorePassword = async function (req, res, error) {
 			message: error.message ? error.message : error
 		})
 	}
-}
+};

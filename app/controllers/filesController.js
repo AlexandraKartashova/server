@@ -30,7 +30,7 @@ module.exports.getAllFiles = async function(req, res, error) {
 			message: error.message ? error.message : error
 		})
 	}
-}
+};
 
 //get file by id
 module.exports.getFileById = async function(req, res, error) {
@@ -46,7 +46,7 @@ module.exports.getFileById = async function(req, res, error) {
 			message: error.message ? error.message : error
 		})
 	}
-}
+};
 
 //delet file by id
 module.exports.removeFile = async function(req, res) {
@@ -64,7 +64,7 @@ module.exports.removeFile = async function(req, res) {
 			message: error.message ? error.message : error
 		})
 	}
-}
+};
 
 //get all files from one user by userId
 // module.exports.getFileByUser = async function(req, res, error) {

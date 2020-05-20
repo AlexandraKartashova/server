@@ -1,15 +1,17 @@
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const jwtSecret = 'exceed team';
 const User = require('../models/user.model');
 
 //запрос на пользователя
 module.exports.updateDataUser = async function (req, res, error) {
-	const { email, password, firstName, lastName, avatar } = req.body;
+	const { id, email, password, firstName, lastName, avatar } = req.body;
 	const salt = bcrypt.genSaltSync(10);
 	const candidate = await User.findOneAndUpdate(
-		{ email },
-		{ password: bcrypt.hashSync(password, salt) },	//change in this object bcrypt.hashSync(password, salt),
+		{ _id: id,
+			email },
+		{ password: bcrypt.hashSync(password, salt),
+			firstName,
+			lastName,
+			avatar },	//change in this object bcrypt.hashSync(password, salt),
 		{ new: true } //update and return this user
 	);
 	try{
@@ -20,4 +22,4 @@ module.exports.updateDataUser = async function (req, res, error) {
 			message: error.message ? error.message : error
 		})
 	}
-}
+};

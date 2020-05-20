@@ -3,7 +3,7 @@ const User = require('../models/user.model');
 
 module.exports.register = async function (req, res) {
 	const { email, password, firstName, lastName, avatar } = req.body;
-	const candidate = await User.findOne({ email })
+	const candidate = await User.findOne({ email });
 	if(candidate) {
 		res.status(409).json({ 
 			message: 'User with this email registered!' 
@@ -17,7 +17,7 @@ module.exports.register = async function (req, res) {
 			firstName,
 			lastName,
 			avatar
-		})
+		});
 		try{
 			await user.save();
 			res.status(201).json(user);
@@ -28,4 +28,4 @@ module.exports.register = async function (req, res) {
 			})
 		}
 	}
-}
+};

@@ -26,4 +26,4 @@ module.exports.login = async function (req, res) {
 			message: 'Invalid email or password!' 
 		});
 	}
-}
+};

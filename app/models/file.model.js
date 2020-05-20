@@ -7,6 +7,6 @@ const fileSchema = new Schema({
 		type: String,
 		require: true
 	}
-})
+});
 
 module.exports = File = mongoose.model('files', fileSchema);

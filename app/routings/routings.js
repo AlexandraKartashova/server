@@ -3,21 +3,23 @@ const router = express.Router();
 const loginController = require('../controllers/loginController');
 const registrController = require('../controllers/registrController');
 const fileController = require('../controllers/filesController');
+const restorePasswordController = require('../controllers/restorePasswordController');
+const userDataUpdateController = require('../controllers/userDataUpdateController');
 
+//auth
 router.post('/login', loginController.login);
 router.post('/register', registrController.register);
-router.post('/files', fileController.createFile)
 
-router.get('/files/loaded', (req, res) => {
-	res.send({path: 'files/loaded'});
-})
+//files
+router.post('/files/upload', fileController.createFile);
+router.get('/files/all', fileController.getAllFiles);
+router.get('/files/:id', fileController.getFileById);
+router.delete('/files/:id', fileController.removeFile);
 
-router.get('/files/downloaded', (req, res) => {
-	res.send({path: 'files/downloaded'});
-})
+//update user profile
+router.patch('/user/:id', userDataUpdateController.updateDataUser);
 
-router.get('/restore-password', (req, res) => {
-	res.send({path: 'restore-password'});
-})
+//restore password
+router.patch('/restore-password', restorePasswordController.restorePassword);
 
 module.exports = router;

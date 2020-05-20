@@ -21,10 +21,9 @@ const UserSchema = new Schema ({
 		type: String,
 		required: true,
 	},
-	// avatar: {
-	// 	type: String,
-	// 	required: false,
-	// }
+	avatar: {
+		type: String //fom front string base64
+	}
 });
 
 module.exports = User = mongoose.model('users', UserSchema);

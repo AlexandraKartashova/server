@@ -5,6 +5,7 @@ const registrController = require('../controllers/registrController');
 const fileController = require('../controllers/filesController');
 const restorePasswordController = require('../controllers/restorePasswordController');
 const userDataUpdateController = require('../controllers/userDataUpdateController');
+const getDataUser = require('../controllers/userDataUpdateController')
 
 //auth
 router.post('/login', loginController.login);
@@ -17,6 +18,7 @@ router.get('/files/:id', fileController.getFileById);
 router.delete('/files/:id', fileController.removeFile);
 
 //update user profile
+router.get('/user/:id', userDataUpdateController.getDataUser)
 router.patch('/user/:id', userDataUpdateController.updateDataUser);
 
 //restore password

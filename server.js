@@ -5,7 +5,8 @@ const multer = require('multer');
 require('./app/routings/routings');
 
 const server = express();
-const PORT = process.env.PORT || 3000;
+const cors = require('cors');
+const PORT = process.env.PORT || 8080;
 
 mongoose.connect('mongodb+srv://Alexandra:restart987@cluster0-k46rv.mongodb.net/test', {
 	useNewUrlParser: true,
@@ -18,6 +19,7 @@ server.use(multer({dest:'/files'}).single('file'));
 server.use(bodyParser.urlencoded({extended: true}));
 server.use(bodyParser.json({limit: '50mb'}));
 server.use('/', require('./app/routings/routings'));
+server.use(cors());
 
 server.listen(PORT, () => {
 	console.log(`Server has been started on ${PORT}`);

@@ -1,6 +1,19 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
 
+module.exports.getDataUser = async function (req, res, error) {
+	const { id } = req.body;
+	const candidate = await User.find({ _id: id });
+	try{
+		res.status(200).json(candidate);
+	} catch(e) {
+		res.status(500).json({
+			success: false,
+			message: error.message ? error.message : error
+		})
+	}
+}
+
 //запрос на пользователя
 module.exports.updateDataUser = async function (req, res, error) {
 	const { id, email, password, firstName, lastName, avatar } = req.body;

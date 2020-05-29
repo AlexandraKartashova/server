@@ -7,7 +7,7 @@ const User = require('../models/user.model');
 module.exports.login = async function (req, res) {
 	const { email, password } = req.body;
 	const candidate = await User.findOne({ email });
-	if (!candidate) { 
+	if (candidate === null) { 
 		res.status(404).json({ 
 			message: 'User does not exist!' 
 		});
